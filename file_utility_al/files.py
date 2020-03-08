@@ -4,7 +4,8 @@ import json
 
 def get_files(path, suffix):
     processed_dir = Path(path)
-    json_files = list(processed_dir.glob(f"*/*{suffix}")) 
+    json_files = list(processed_dir.glob(f"*/*{suffix}"))
+    return json_files 
 
 
 def save_json(json_text, path):

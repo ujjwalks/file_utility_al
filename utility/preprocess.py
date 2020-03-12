@@ -35,7 +35,8 @@ def extract_sent_from_para(para, token_count = 4, lemmatize=True):
     sent = []
     docx = nlp(para)
     for sentence in docx.sents:
-        if(len(tokenize(sentence.text), lemmatize=lemmatize) > token_count):
+        tokens = tokenize(sentence.text, lemmatize=lemmatize)
+        if(len(tokens) > token_count):
             sent.append(sentence.text)
     return sent
     
@@ -79,11 +80,14 @@ def extract_para_from_judgement(filepath):
     return None
 
 
-def extract_sent_from_judgement(filepath, token_count, lemmatize = True):
+def extract_sent_from_judgement(filepath, token_count, segment=False, lemmatize = True):
     sent = []
     paras = extract_para_from_judgement(filepath)
     for para in paras:
-        sent.extend(extract_sent_from_para(para, token_count, lemmatize=lemmatize))
+        if segment:
+            sent.append(extract_sent_from_para(para, token_count, lemmatize=lemmatize))
+        else:
+            sent.extend(extract_sent_from_para(para, token_count, lemmatize=lemmatize))
     return sent
 
 

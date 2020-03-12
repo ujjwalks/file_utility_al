@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="utility-al",
-    version="0.0.5",
+    version="0.0.7",
     author="Ujjwal Singh",
     author_email="ujjwalks01@gmail.com",
     description="This project contains utility file to load data to train models",
